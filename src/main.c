@@ -35,6 +35,9 @@ int main(int argc, char **argv)
     as->ball.width = 15;
     as->ball.height = 15;
 
+    Texture2D texture = LoadTexture(strcat(resource_destloc, "\\sakura.png"));
+    printf("%d\n", texture.format);
+
     Music music = LoadMusicStream(strcat(music_destloc, "\\music.mp3"));
     PlayMusicStream(music);
 
@@ -45,6 +48,7 @@ int main(int argc, char **argv)
         BeginDrawing();
         handle_keyboard_input(as);
         ClearBackground(GRAY);
+        DrawTexture(texture, WINDOW_WIDTH/2 - texture.width/2, WINDOW_HEIGHT/2 - texture.height/2, WHITE);
         const Rectangle ball_rect = {as->ball.x, as->ball.y, as->ball.width, as->ball.height};
         DrawRectangleRec(ball_rect, WHITE);
         DrawText("It works!", 20, 20, 20, RAYWHITE);
