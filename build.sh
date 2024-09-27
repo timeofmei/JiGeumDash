@@ -18,6 +18,8 @@ case $1 in
     cp resources/7za.exe build/$1/7za.exe
     cp resources/music.zip build/$1/music.zip
     cp resources/resource.zip build/$1/resource.zip
-    ./run.sh $1 $2 $3 $4
+    if [ $? -eq 0 ]; then
+      ./run.sh $1 $2 $3 $4
+    fi
     ;;
 esac
